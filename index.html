@@ -1,0 +1,2071 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตารางเรียน 3 เดือน (เมษายน - มิถุนายน 2568)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Theme Colors from the reference image */
+            --american-purple: #472950;
+            --lilac: #C0A4C4;
+            --cinnamon-satin: #D46A79;
+            --apricot: #F6CBB6;
+            --persian-plum: #78201B;
+            
+            /* Additional colors for UI elements */
+            --light-bg: #f8f5fa;
+            --white: #ffffff;
+            --dark-text: #333333;
+            --light-text: #ffffff;
+            --card-shadow: 0 8px 16px rgba(71, 41, 80, 0.1);
+            --overlay-bg: rgba(71, 41, 80, 0.03);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Prompt', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--light-bg);
+            background-image: url('https://api.placeholder.com/400/320');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(192, 164, 196, 0.8), rgba(212, 106, 121, 0.6));
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        header {
+            background: var(--american-purple);
+            color: var(--light-text);
+            padding: 2.5rem 0;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(71, 41, 80, 0.8) 0%, 
+                rgba(192, 164, 196, 0.5) 50%, 
+                rgba(212, 106, 121, 0.3) 100%);
+            z-index: 0;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .main-content {
+            background-color: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            background-color: var(--overlay-bg);
+        }
+        
+        .card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--lilac), var(--cinnamon-satin));
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--american-purple);
+            color: var(--white);
+            border-radius: 12px;
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--american-purple);
+        }
+        
+        .card-content {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+        }
+        
+        .card-footer {
+            font-size: 0.9rem;
+            color: var(--cinnamon-satin);
+            font-weight: 300;
+        }
+        
+        .tabs {
+            display: flex;
+            background: var(--american-purple);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+        
+        .tab-btn {
+            padding: 1.2rem 1.5rem;
+            background: none;
+            border: none;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .tab-btn::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(to right, var(--lilac), var(--cinnamon-satin));
+            transition: all 0.3s;
+            transform: translateX(-50%);
+            z-index: -1;
+        }
+        
+        .tab-btn:hover {
+            color: var(--white);
+        }
+        
+        .tab-btn:hover::after {
+            width: 80%;
+        }
+        
+        .tab-btn.active {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .tab-btn.active::after {
+            width: 80%;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        h2 {
+            color: var(--american-purple);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--american-purple), var(--cinnamon-satin));
+        }
+        
+        h3 {
+            color: var(--american-purple);
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            font-weight: 500;
+        }
+        
+        h4 {
+            color: var(--persian-plum);
+            font-size: 1.2rem;
+            margin: 1.2rem 0 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* Subject Colors - Pastel versions of our theme colors */
+        .subject-calc { background-color: rgba(192, 164, 196, 0.2); }
+        .subject-discrete { background-color: rgba(192, 164, 196, 0.3); }
+        .subject-data { background-color: rgba(212, 106, 121, 0.15); }
+        .subject-python { background-color: rgba(71, 41, 80, 0.1); }
+        .subject-rust { background-color: rgba(212, 106, 121, 0.2); }
+        .subject-english { background-color: rgba(246, 203, 182, 0.3); }
+        .subject-game { background-color: rgba(120, 32, 27, 0.1); }
+        .subject-web { background-color: rgba(246, 203, 182, 0.4); }
+        .subject-project { background-color: rgba(192, 164, 196, 0.1); }
+        .subject-linux { background-color: rgba(246, 203, 182, 0.2); }
+        .subject-typing { background-color: rgba(212, 106, 121, 0.1); }
+        .subject-problem { background-color: rgba(71, 41, 80, 0.15); }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0 2.5rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--american-purple);
+            color: var(--white);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+        
+        tr:nth-child(even) {
+            background-color: rgba(192, 164, 196, 0.05);
+        }
+        
+        tr:hover {
+            background-color: rgba(192, 164, 196, 0.1);
+        }
+        
+        .project-details {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-details::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--american-purple), var(--lilac));
+        }
+        
+        .project-details h3 {
+            color: var(--american-purple);
+            margin-top: 1.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(192, 164, 196, 0.2);
+        }
+        
+        .project-details ul, .resources ul {
+            margin-left: 1.8rem;
+            margin-top: 1rem;
+        }
+        
+        .project-details li, .resources li {
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .resources {
+            margin-top: 2rem;
+        }
+        
+        .resources h3 {
+            margin-top: 2rem;
+            color: var(--american-purple);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(192, 164, 196, 0.2);
+        }
+        
+        .tips {
+            background: linear-gradient(135deg, var(--american-purple), var(--persian-plum));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(71, 41, 80, 0.2);
+        }
+        
+        .tips::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+        }
+        
+        .tips h2 {
+            color: var(--white);
+            border-bottom: none;
+            padding-bottom: 1rem;
+        }
+        
+        .tips h2::after {
+            background: linear-gradient(to right, var(--white), rgba(255, 255, 255, 0.5));
+        }
+        
+        .tips ol {
+            margin-left: 1.8rem;
+            counter-reset: tip-counter;
+        }
+        
+        .tips li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 0.5rem;
+            counter-increment: tip-counter;
+        }
+        
+        .tips li::marker {
+            font-weight: 600;
+            color: var(--lilac);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            background-color: var(--american-purple);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--lilac), var(--cinnamon-satin), var(--apricot), var(--persian-plum));
+        }
+        
+        .pulse-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(to right, var(--cinnamon-satin), var(--persian-plum));
+            color: var(--white);
+            border: none;
+            border-radius: 30px;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1.5rem;
+            box-shadow: 0 4px 10px rgba(212, 106, 121, 0.3);
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+        
+        .pulse-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(212, 106, 121, 0.4);
+        }
+        
+        .pulse-btn::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .pulse-btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 1.8rem 0;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+                padding: 1.5rem;
+            }
+            
+            .main-content {
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+            
+            .tabs {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                flex: 1 0 50%;
+                padding: 1rem;
+                font-size: 0.9rem;
+                text-align: center;
+            }
+            
+            .tab-content {
+                padding: 1.5rem;
+            }
+            
+            th, td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .tips {
+                padding: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tab-btn {
+                flex: 1 0 100%;
+            }
+            
+            th, td {
+                padding: 8px;
+                font-size: 0.8rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            h3 {
+                font-size: 1.2rem;
+            }
+        }
+        .countdown-container {
+            background: linear-gradient(135deg, var(--american-purple), var(--persian-plum));
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--white);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-container::before {
+            content: "";
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+        
+        .countdown-container h2 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-container h2::after {
+            background: linear-gradient(to right, var(--white), rgba(255, 255, 255, 0.5));
+        }
+        
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .countdown-box {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 1rem;
+            min-width: 80px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .countdown-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--apricot);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+        
+        #progress-container {
+            margin-top: 1.5rem;
+        }
+        
+        .progress-label {
+            text-align: left;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .progress-bar {
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--apricot), var(--cinnamon-satin));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1s ease-in-out;
+        }
+        
+        #progress-percent {
+            text-align: right;
+            font-weight: 600;
+            color: var(--apricot);
+        }
+        
+        @media (max-width: 768px) {
+            .countdown-timer {
+                flex-wrap: wrap;
+            }
+            
+            .countdown-box {
+                min-width: 70px;
+                padding: 0.8rem;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+        }
+        .progress-tracker-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .progress-tracker-container h2 {
+            color: var(--american-purple);
+            margin-bottom: 1.8rem;
+            text-align: center;
+        }
+        
+        .progress-summary {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            align-items: center;
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+        
+        .progress-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .progress-circle-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+        }
+        
+        .progress-circle {
+            transform: rotate(-90deg);
+        }
+        
+        .progress-circle-bg {
+            fill: none;
+            stroke: rgba(192, 164, 196, 0.3);
+        }
+        
+        .progress-circle-fill {
+            fill: none;
+            stroke: var(--american-purple);
+            transition: stroke-dashoffset 1s ease;
+        }
+        
+        .progress-circle-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .progress-circle-text span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--american-purple);
+        }
+        
+        .progress-stat-label {
+            margin-top: 0.8rem;
+            font-weight: 500;
+            color: var(--american-purple);
+        }
+        
+        .progress-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .progress-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .progress-detail-label {
+            font-weight: 500;
+            color: var(--american-purple);
+        }
+        
+        .subjects-progress, .projects-progress {
+            margin-top: 2rem;
+        }
+        
+        .subjects-progress h3, .projects-progress h3 {
+            color: var(--american-purple);
+            margin-bottom: 1.2rem;
+            text-align: center;
+        }
+        
+        .subjects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .subject-card {
+            border-radius: 12px;
+            padding: 1.2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .subject-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-header h4 {
+            margin: 0;
+            color: var(--persian-plum);
+        }
+        
+        .subject-hours {
+            font-weight: 600;
+            color: var(--american-purple);
+        }
+        
+        .subject-progress-bar, .project-progress-bar {
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+        
+        .subject-progress-fill, .project-progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--lilac), var(--american-purple));
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .subject-controls {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .subject-update-btn {
+            background-color: var(--american-purple);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-family: 'Prompt', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .subject-update-btn:hover {
+            background-color: var(--persian-plum);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .project-card {
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--light-bg);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .project-header h4 {
+            margin: 0;
+            color: var(--american-purple);
+        }
+        
+        .project-percent {
+            font-weight: 600;
+            color: var(--cinnamon-satin);
+        }
+        
+        .project-milestones {
+            margin-top: 1.2rem;
+        }
+        
+        .milestone {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .milestone-checkbox {
+            margin-right: 0.8rem;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .milestone label {
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .progress-summary {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .subjects-grid, .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>What wuold I do in SUMMER 2025</h1>
+            <p>เมษายน - มิถุนายน 2568</p>
+        </div>
+    </header>
+            <div class="container">
+                <div class="main-content">
+                    <div class="countdown-container">
+                        <h2>เวลาที่เหลือในการเรียน</h2>
+                        <div class="countdown-timer">
+                            <div class="countdown-box">
+                                <div id="days" class="countdown-value">00</div>
+                                <div class="countdown-label">วัน</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="hours" class="countdown-value">00</div>
+                                <div class="countdown-label">ชั่วโมง</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="minutes" class="countdown-value">00</div>
+                                <div class="countdown-label">นาที</div>
+                            </div>
+                            <div class="countdown-box">
+                                <div id="seconds" class="countdown-value">00</div>
+                                <div class="countdown-label">วินาที</div>
+                            </div>
+                        </div>
+                        <div id="progress-container">
+                            <div class="progress-label">ความคืบหน้าของหลักสูตร</div>
+                            <div class="progress-bar">
+                                <div id="progress-fill" class="progress-fill"></div>
+                            </div>
+                            <div id="progress-percent">0%</div>
+                        </div>
+                    </div>
+                    <div class="progress-tracker-container">
+    <h2>ติดตามความคืบหน้าของคุณ</h2>
+    
+    <div class="progress-summary">
+        <div class="progress-stat">
+            <div class="progress-circle-container">
+                <svg class="progress-circle" width="120" height="120" viewBox="0 0 120 120">
+                    <circle class="progress-circle-bg" cx="60" cy="60" r="54" stroke-width="12" />
+                    <circle class="progress-circle-fill" id="overall-progress-circle" cx="60" cy="60" r="54" stroke-width="12" stroke-dasharray="339.5" stroke-dashoffset="339.5" />
+                </svg>
+                <div class="progress-circle-text">
+                    <span id="overall-progress-percent">0%</span>
+                </div>
+            </div>
+            <p class="progress-stat-label">ความคืบหน้ารวม</p>
+        </div>
+        
+        <div class="progress-details">
+            <div class="progress-detail">
+                <div class="progress-detail-label">วิชาที่เรียนแล้ว:</div>
+                <div id="completed-subjects">0/11</div>
+            </div>
+            <div class="progress-detail">
+                <div class="progress-detail-label">ชั่วโมงเรียนสะสม:</div>
+                <div id="completed-hours">0/320</div>
+            </div>
+            <div class="progress-detail">
+                <div class="progress-detail-label">ความคืบหน้าโปรเจค:</div>
+                <div id="project-progress">0%</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="subjects-progress">
+        <h3>ความคืบหน้ารายวิชา</h3>
+        <div class="subjects-grid">
+            <div class="subject-card subject-calc">
+                <div class="subject-header">
+                    <h4>Calculus 3</h4>
+                    <div class="subject-hours">0/30 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="calculus" data-total="30">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-discrete">
+                <div class="subject-header">
+                    <h4>Discrete Mathematics</h4>
+                    <div class="subject-hours">0/30 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="discrete" data-total="30">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-data">
+                <div class="subject-header">
+                    <h4>Data Structure</h4>
+                    <div class="subject-hours">0/40 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="datastructure" data-total="40">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-python">
+                <div class="subject-header">
+                    <h4>Python</h4>
+                    <div class="subject-hours">0/30 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="python" data-total="30">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-rust">
+                <div class="subject-header">
+                    <h4>Rust</h4>
+                    <div class="subject-hours">0/30 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="rust" data-total="30">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-english">
+                <div class="subject-header">
+                    <h4>ภาษาอังกฤษ</h4>
+                    <div class="subject-hours">0/20 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="english" data-total="20">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-game">
+                <div class="subject-header">
+                    <h4>การทำเกม</h4>
+                    <div class="subject-hours">0/50 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="game" data-total="50">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-web">
+                <div class="subject-header">
+                    <h4>การพัฒนาเว็บไซต์</h4>
+                    <div class="subject-hours">0/40 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="web" data-total="40">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-linux">
+                <div class="subject-header">
+                    <h4>Linux & Command Line</h4>
+                    <div class="subject-hours">0/20 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="linux" data-total="20">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-typing">
+                <div class="subject-header">
+                    <h4>Typing Practice</h4>
+                    <div class="subject-hours">0/10 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="typing" data-total="10">อัพเดท</button>
+                </div>
+            </div>
+            
+            <div class="subject-card subject-problem">
+                <div class="subject-header">
+                    <h4>Coding Problem Solving</h4>
+                    <div class="subject-hours">0/20 ชม.</div>
+                </div>
+                <div class="subject-progress-bar">
+                    <div class="subject-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="subject-controls">
+                    <button class="subject-update-btn" data-subject="problem" data-total="20">อัพเดท</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="projects-progress">
+        <h3>ความคืบหน้าโปรเจค</h3>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>โปรเจคเว็บไซต์</h4>
+                    <div class="project-percent">0%</div>
+                </div>
+                <div class="project-progress-bar">
+                    <div class="project-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="project-milestones">
+                    <div class="milestone">
+                        <input type="checkbox" id="web-milestone-1" class="milestone-checkbox" data-project="web" data-milestone="1">
+                        <label for="web-milestone-1">ออกแบบและวางโครงสร้าง</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="web-milestone-2" class="milestone-checkbox" data-project="web" data-milestone="2">
+                        <label for="web-milestone-2">พัฒนาหน้าแรกและเมนู</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="web-milestone-3" class="milestone-checkbox" data-project="web" data-milestone="3">
+                        <label for="web-milestone-3">สร้างระบบบล็อกพื้นฐาน</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="web-milestone-4" class="milestone-checkbox" data-project="web" data-milestone="4">
+                        <label for="web-milestone-4">ทำให้รองรับมือถือ</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="web-milestone-5" class="milestone-checkbox" data-project="web" data-milestone="5">
+                        <label for="web-milestone-5">เสร็จสมบูรณ์และเผยแพร่</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>โปรเจคเกม</h4>
+                    <div class="project-percent">0%</div>
+                </div>
+                <div class="project-progress-bar">
+                    <div class="project-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="project-milestones">
+                    <div class="milestone">
+                        <input type="checkbox" id="game-milestone-1" class="milestone-checkbox" data-project="game" data-milestone="1">
+                        <label for="game-milestone-1">ออกแบบเกมและกลไก</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="game-milestone-2" class="milestone-checkbox" data-project="game" data-milestone="2">
+                        <label for="game-milestone-2">สร้างตัวละครและฉาก</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="game-milestone-3" class="milestone-checkbox" data-project="game" data-milestone="3">
+                        <label for="game-milestone-3">พัฒนาระบบคะแนนและอุปสรรค</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="game-milestone-4" class="milestone-checkbox" data-project="game" data-milestone="4">
+                        <label for="game-milestone-4">เพิ่มเสียงและเอฟเฟค</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="game-milestone-5" class="milestone-checkbox" data-project="game" data-milestone="5">
+                        <label for="game-milestone-5">เสร็จสมบูรณ์และทดสอบ</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>โปรเจค Python</h4>
+                    <div class="project-percent">0%</div>
+                </div>
+                <div class="project-progress-bar">
+                    <div class="project-progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="project-milestones">
+                    <div class="milestone">
+                        <input type="checkbox" id="python-milestone-1" class="milestone-checkbox" data-project="python" data-milestone="1">
+                        <label for="python-milestone-1">ออกแบบและเตรียมข้อมูล</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="python-milestone-2" class="milestone-checkbox" data-project="python" data-milestone="2">
+                        <label for="python-milestone-2">ทำความสะอาดและวิเคราะห์ข้อมูล</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="python-milestone-3" class="milestone-checkbox" data-project="python" data-milestone="3">
+                        <label for="python-milestone-3">สร้างกราฟและแผนภูมิ</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="python-milestone-4" class="milestone-checkbox" data-project="python" data-milestone="4">
+                        <label for="python-milestone-4">พัฒนา Dashboard</label>
+                    </div>
+                    <div class="milestone">
+                        <input type="checkbox" id="python-milestone-5" class="milestone-checkbox" data-project="python" data-milestone="5">
+                        <label for="python-milestone-5">ทดสอบและจัดทำเอกสาร</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <div class="dashboard">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="card-title">ระยะเวลา</h3>
+                    </div>
+                    <div class="card-content">
+                        3 เดือน (เมษายน - มิถุนายน 2568)
+                    </div>
+                    <div class="card-footer">
+                        รวม 65 วันเรียน
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="card-title">จำนวนวิชา</h3>
+                    </div>
+                    <div class="card-content">
+                        11 วิชาหลัก + โปรเจคจริง
+                    </div>
+                    <div class="card-footer">
+                        ครอบคลุมทั้งทฤษฎีและปฏิบัติ
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="card-title">ภาษาโปรแกรมมิ่ง</h3>
+                    </div>
+                    <div class="card-content">
+                        Python, Rust, JavaScript, HTML/CSS
+                    </div>
+                    <div class="card-footer">
+                        เรียนรู้หลากหลายภาษาที่ทันสมัย
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-icon">
+                            <i class="fas fa-project-diagram"></i>
+                        </div>
+                        <h3 class="card-title">โปรเจค</h3>
+                    </div>
+                    <div class="card-content">
+                        เว็บไซต์, เกม, แอปพลิเคชัน Python
+                    </div>
+                    <div class="card-footer">
+                        ผลงานจริงเพื่อใส่พอร์ตโฟลิโอ
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab(event, 'overview')">ภาพรวม</button>
+                <button class="tab-btn" onclick="openTab(event, 'schedule')">ตารางเรียน</button>
+                <button class="tab-btn" onclick="openTab(event, 'projects')">โปรเจค</button>
+                <button class="tab-btn" onclick="openTab(event, 'resources')">แหล่งเรียนรู้</button>
+            </div>
+            
+            <div id="overview" class="tab-content active">
+                <section>
+                    <h2>การแบ่งเวลาโดยรวม</h2>
+                    <table>
+                        <tr>
+                            <th>วิชา</th>
+                            <th>จำนวนชั่วโมงต่อสัปดาห์</th>
+                            <th>รวมชั่วโมงตลอดหลักสูตร</th>
+                            <th>เป้าหมาย</th>
+                        </tr>
+                        <tr class="subject-calc">
+                            <td>Calculus 3</td>
+                            <td>3</td>
+                            <td>30</td>
+                            <td>เข้าใจแคลคูลัสหลายตัวแปร พื้นผิว และการอินทิเกรตหลายชั้น</td>
+                        </tr>
+                        <tr class="subject-discrete">
+                            <td>Discrete Mathematics</td>
+                            <td>3</td>
+                            <td>30</td>
+                            <td>เข้าใจพื้นฐานตรรกศาสตร์ เซต ความสัมพันธ์ และทฤษฎีกราฟ</td>
+                        </tr>
+                        <tr class="subject-data">
+                            <td>Data Structure</td>
+                            <td>4</td>
+                            <td>40</td>
+                            <td>เรียนรู้โครงสร้างข้อมูลพื้นฐานและการใช้งานจริง</td>
+                        </tr>
+                        <tr class="subject-python">
+                            <td>ภาษา Python</td>
+                            <td>3</td>
+                            <td>30</td>
+                            <td>เรียนรู้ไวยากรณ์พื้นฐานและการประยุกต์ใช้งาน เน้น Data Science</td>
+                        </tr>
+                        <tr class="subject-rust">
+                            <td>ภาษา Rust</td>
+                            <td>3</td>
+                            <td>30</td>
+                            <td>เข้าใจไวยากรณ์พื้นฐานและสร้างโปรเจคเล็กๆ</td>
+                        </tr>
+                        <tr class="subject-english">
+                            <td>ภาษาอังกฤษเพื่อการสนทนา</td>
+                            <td>2</td>
+                            <td>20</td>
+                            <td>พัฒนาทักษะการพูดและฟังในสถานการณ์ต่างๆ</td>
+                        </tr>
+                        <tr class="subject-game">
+                            <td>การทำเกม</td>
+                            <td>5</td>
+                            <td>50</td>
+                            <td>เรียนรู้พื้นฐานการพัฒนาเกมและสร้างเกม 2D แบบ 2 มิติ</td>
+                        </tr>
+                        <tr class="subject-web">
+                            <td>การพัฒนาเว็บไซต์</td>
+                            <td>4</td>
+                            <td>40</td>
+                            <td>เรียนรู้ HTML, CSS, JavaScript และสร้างเว็บไซต์โปรเจค</td>
+                        </tr>
+                        <tr class="subject-linux">
+                            <td>Linux & Command Line</td>
+                            <td>2</td>
+                            <td>20</td>
+                            <td>เรียนรู้การใช้งาน Linux และคำสั่งพื้นฐานสำหรับการพัฒนา</td>
+                        </tr>
+                        <tr class="subject-typing">
+                            <td>Typing Practice</td>
+                            <td>1</td>
+                            <td>10</td>
+                            <td>พัฒนาความเร็วและความแม่นยำในการพิมพ์โค้ด</td>
+                        </tr>
+                        <tr class="subject-problem">
+                            <td>Coding Problem Solving</td>
+                            <td>2</td>
+                            <td>20</td>
+                            <td>พัฒนาทักษะการแก้ปัญหาและอัลกอริทึม</td>
+                        </tr>
+                    </table>
+                </section>
+                
+                <div class="tips">
+                    <h2>เคล็ดลับการเรียนรู้</h2>
+                    <ol>
+                        <li><strong>วางแผนและติดตาม</strong>: ทุกวันเขียนสิ่งที่ต้องทำและติดตามความก้าวหน้า</li>
+                        <li><strong>การทบทวนสม่ำเสมอ</strong>: ใช้การทบทวนแบบช่วงเวลา (spaced repetition) เพื่อจดจำเนื้อหา</li>
+                        <li><strong>สร้างโปรเจค</strong>: ลงมือทำโปรเจคเล็กๆ เพื่อเชื่อมโยงความรู้</li>
+                        <li><strong>หาเพื่อนเรียน</strong>: หากเป็นไปได้ หาเพื่อนเรียนหรือกลุ่มเรียนออนไลน์</li>
+                        <li><strong>พักผ่อนเพียงพอ</strong>: พักเบรคสั้นๆ ทุก 50 นาที และนอนให้พอ</li>
+                        <li><strong>เชื่อมโยงความรู้</strong>: พยายามเชื่อมโยงวิชาต่างๆ เข้าด้วยกัน (เช่น ใช้ Python ในการทำ Data Analysis)</li>
+                        <li><strong>การเรียนหลายภาษา</strong>: หลังจากเรียน Python แล้ว การเรียน Rust จะง่ายขึ้น เนื่องจากมีพื้นฐานแนวคิดที่คล้ายกัน</li>
+                    </ol>
+                </div>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="#schedule" class="pulse-btn" onclick="openTab(event, 'schedule')">ดูตารางเรียน</a>
+                </div>
+            </div>
+            
+            <div id="schedule" class="tab-content">
+                <section>
+                
+                    <h2>รายละเอียดตารางเรียนรายสัปดาห์</h2>
+                    
+                    <h3>ช่วงที่ 1: 8 - 14 เมษายน (7 วัน)</h3>
+                    <p><strong>เน้น</strong>: พื้นฐานเริ่มต้นทุกวิชา</p>
+                    <table>
+                        <tr>
+                            <th>วัน</th>
+                            <th>เช้า (9:00-12:00)</th>
+                            <th>บ่าย (13:30-16:30)</th>
+                            <th>เย็น (18:00-21:00)</th>
+                        </tr>
+                        <tr>
+                            <td>8 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: บทนำและทบทวน Calculus 1-2</td>
+                            <td class="subject-discrete">Discrete Mathematics: พื้นฐานตรรกศาสตร์</td>
+                            <td class="subject-linux">Linux: แนะนำระบบปฏิบัติการ Linux และการติดตั้ง Ubuntu</td>
+                        </tr>
+                        <tr>
+                            <td>9 เม.ย.</td>
+                            <td class="subject-data">Data Structure: พื้นฐานอัลกอริทึมและ Big-O</td>
+                            <td class="subject-python">ภาษา Python: ติดตั้งและเริ่มต้นใช้งาน</td>
+                            <td class="subject-english">ภาษาอังกฤษ: แนะนำตัวและทักทาย</td>
+                        </tr>
+                        <tr>
+                            <td>10 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: ระบบพิกัดและเวกเตอร์</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: พื้นฐาน HTML และโครงสร้างเว็บ</td>
+                            <td class="subject-problem">Coding Problem: แนะนำการแก้โจทย์ปัญหา</td>
+                        </tr>
+                        <tr>
+                            <td>11 เม.ย.</td>
+                            <td class="subject-discrete">Discrete Mathematics: ทฤษฎีเซต</td>
+                            <td class="subject-game">การทำเกม: ภาพรวมของการพัฒนาเกมและเครื่องมือ Godot</td>
+                            <td class="subject-rust">ภาษา Rust: ติดตั้งและ Hello World</td>
+                        </tr>
+                        <tr>
+                            <td>12 เม.ย.</td>
+                            <td class="subject-data">Data Structure: Arrays และ Linked Lists</td>
+                            <td class="subject-python">ภาษา Python: ตัวแปร, ข้อมูลพื้นฐาน และ การควบคุมการทำงาน</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: พื้นฐาน CSS</td>
+                        </tr>
+                        <tr>
+                            <td>13 เม.ย.</td>
+                            <td class="subject-linux">Linux: การใช้งาน Terminal และคำสั่งพื้นฐาน</td>
+                            <td class="subject-game">การทำเกม: ออกแบบเกมเบื้องต้น และโปรเจค 2D</td>
+                            <td class="subject-typing">Typing Practice: พิมพ์ภาษาอังกฤษและโค้ดพื้นฐาน</td>
+                        </tr>
+                        <tr>
+                            <td>14 เม.ย.</td>
+                            <td class="subject-project">โปรเจคเว็บ: เริ่มออกแบบและวางโครงสร้างโปรเจคเว็บไซต์</td>
+                            <td class="subject-project">โปรเจคเกม: ออกแบบ Game Concept และ Mechanics</td>
+                            <td class="subject-python">Python: สร้างโปรแกรมคำนวณง่ายๆ</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>ช่วงที่ 2: 17 - 25 เมษายน (9 วัน)</h3>
+                    <p><strong>เน้น</strong>: เรียนรู้หัวข้อที่ซับซ้อนขึ้นและเริ่มโปรเจค</p>
+                    <table>
+                        <tr>
+                            <th>วัน</th>
+                            <th>เช้า (9:00-12:00)</th>
+                            <th>บ่าย (13:30-16:30)</th>
+                            <th>เย็น (18:00-21:00)</th>
+                        </tr>
+                        <tr>
+                            <td>17 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: อนุพันธ์ย่อย</td>
+                            <td class="subject-discrete">Discrete Mathematics: วิธีการพิสูจน์</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: การจัดเลย์เอาท์ด้วย CSS</td>
+                        </tr>
+                        <tr>
+                            <td>18 เม.ย.</td>
+                            <td class="subject-data">Data Structure: Stacks และ Queues</td>
+                            <td class="subject-rust">ภาษา Rust: การควบคุมการทำงาน (if, loop)</td>
+                            <td class="subject-problem">Coding Problem: โจทย์ Stack และ Queue</td>
+                        </tr>
+                        <tr>
+                            <td>19 เม.ย.</td>
+                            <td class="subject-english">ภาษาอังกฤษ: การสั่งอาหารและช้อปปิ้ง</td>
+                            <td class="subject-game">การทำเกม: การสร้างตัวละครและ Animation พื้นฐาน</td>
+                            <td class="subject-python">Python: ฟังก์ชันและโมดูล</td>
+                        </tr>
+                        <tr>
+                            <td>20 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: การหาค่าสูงสุด-ต่ำสุด</td>
+                            <td class="subject-discrete">Discrete Mathematics: นับและความน่าจะเป็น</td>
+                            <td class="subject-linux">Linux: การจัดการไฟล์และสิทธิ์การเข้าถึง</td>
+                        </tr>
+                        <tr>
+                            <td>21 เม.ย.</td>
+                            <td class="subject-data">Data Structure: Trees และ Binary Trees</td>
+                            <td class="subject-rust">ภาษา Rust: การจัดการความจำและ Ownership</td>
+                            <td class="subject-project">โปรเจคเว็บ: พัฒนาโครงสร้าง HTML และ CSS</td>
+                        </tr>
+                        <tr>
+                            <td>22 เม.ย.</td>
+                            <td class="subject-project">โปรเจคเกม: สร้างฉากและระบบการเคลื่อนที่</td>
+                            <td class="subject-game">การทำเกม: การสร้างฟิสิกส์เบื้องต้น</td>
+                            <td class="subject-english">ภาษาอังกฤษ: การถามทิศทางและการเดินทาง</td>
+                        </tr>
+                        <tr>
+                            <td>23 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: Lagrange Multipliers</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: DOM และ Event Handlers</td>
+                            <td class="subject-python">Python: การจัดการข้อมูลด้วย List, Dictionary, Set</td>
+                        </tr>
+                        <tr>
+                            <td>24 เม.ย.</td>
+                            <td class="subject-discrete">Discrete Mathematics: ความสัมพันธ์เวียนเกิด</td>
+                            <td class="subject-data">Data Structure: Hash Tables</td>
+                            <td class="subject-rust">ภาษา Rust: สร้าง Struct และ Enums</td>
+                        </tr>
+                        <tr>
+                            <td>25 เม.ย.</td>
+                            <td class="subject-game">การทำเกม: การสร้างระบบคะแนนและเป้าหมาย</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาระบบคอลลิชั่นและการโต้ตอบ</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: การทำเว็บให้ Responsive</td>
+                        </tr>
+                    </table>
+                    
+                    <h3>ช่วงที่ 3: 28 เมษายน - 15 มิถุนายน (49 วัน)</h3>
+                    <p><strong>เน้น</strong>: การประยุกต์ใช้และโปรเจคจริง</p>
+
+                    <h4>สัปดาห์ที่ 1 (28 เม.ย. - 4 พ.ค.)</h4>
+                    <table>
+                        <tr>
+                            <th>วัน</th>
+                            <th>เช้า (9:00-12:00)</th>
+                            <th>บ่าย (13:30-16:30)</th>
+                            <th>เย็น (18:00-21:00)</th>
+                        </tr>
+                        <tr>
+                            <td>28 เม.ย.</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาระบบเก็บคะแนนและอุปสรรค</td>
+                            <td class="subject-project">โปรเจคเว็บ: พัฒนาหน้าแรกและเมนูนำทาง</td>
+                            <td class="subject-linux">Linux: การติดตั้งและจัดการแพ็คเกจ</td>
+                        </tr>
+                        <tr>
+                            <td>29 เม.ย.</td>
+                            <td class="subject-calc">Calculus 3: ทฤษฎีบทของ Green</td>
+                            <td class="subject-discrete">Discrete Mathematics: ทฤษฎีกราฟ 1</td>
+                            <td class="subject-python">Python: การจัดการไฟล์และ I/O operations</td>
+                        </tr>
+                        <tr>
+                            <td>30 เม.ย.</td>
+                            <td class="subject-data">Data Structure: การค้นหาและการเรียงลำดับ</td>
+                            <td class="subject-rust">ภาษา Rust: การจัดการข้อผิดพลาด</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: การใช้งาน API พื้นฐาน</td>
+                        </tr>
+                        <tr>
+                            <td>1 พ.ค.</td>
+                            <td class="subject-game">การทำเกม: UI ในเกม</td>
+                            <td class="subject-game">การทำเกม: การสร้างเมนูและหน้าจอเริ่มเกม</td>
+                            <td class="subject-typing">Typing Practice: พิมพ์โค้ด Rust</td>
+                        </tr>
+                        <tr>
+                            <td>2 พ.ค.</td>
+                            <td class="subject-calc">Calculus 3: ทฤษฎีบทของ Stokes</td>
+                            <td class="subject-discrete">Discrete Mathematics: ทฤษฎีกราฟ 2</td>
+                            <td class="subject-python">Python: การใช้ NumPy พื้นฐาน</td>
+                        </tr>
+                        <tr>
+                            <td>3 พ.ค.</td>
+                            <td class="subject-data">Data Structure: Graphs และการแทนกราฟ</td>
+                            <td class="subject-rust">ภาษา Rust: Traits และ Generics</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์: การจัดการฟอร์มและข้อมูล</td>
+                        </tr>
+                        <tr>
+                            <td>4 พ.ค.</td>
+                            <td class="subject-project">โปรเจคเกม: เพิ่มเอฟเฟคเสียงและภาพ</td>
+                            <td class="subject-game">การทำเกม: ระบบเสียงในเกม</td>
+                            <td class="subject-english">ภาษาอังกฤษ: การนำเสนองาน</td>
+                        </tr>
+                    </table>
+
+                    <h4>สัปดาห์ที่ 2-6 (5 พ.ค. - 8 มิ.ย.)</h4>
+                    <p><em>ตารางประจำสำหรับ 5 สัปดาห์ - เน้นการทำโปรเจคมากขึ้น</em></p>
+                    <table>
+                        <tr>
+                            <th>วัน</th>
+                            <th>เช้า (9:00-12:00)</th>
+                            <th>บ่าย (13:30-16:30)</th>
+                            <th>เย็น (18:00-21:00)</th>
+                        </tr>
+                        <tr>
+                            <td>จันทร์</td>
+                            <td class="subject-calc">Calculus 3</td>
+                            <td class="subject-discrete">Discrete Mathematics</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาต่อเนื่อง</td>
+                        </tr>
+                        <tr>
+                            <td>อังคาร</td>
+                            <td class="subject-data">Data Structure</td>
+                            <td class="subject-rust">ภาษา Rust</td>
+                            <td class="subject-python">Python: ไลบรารี่ต่างๆ เช่น Pandas, Matplotlib</td>
+                        </tr>
+                        <tr>
+                            <td>พุธ</td>
+                            <td class="subject-web">การพัฒนาเว็บไซต์</td>
+                            <td class="subject-game">การทำเกม</td>
+                            <td class="subject-problem">Coding Problem</td>
+                        </tr>
+                        <tr>
+                            <td>พฤหัสบดี</td>
+                            <td class="subject-project">โปรเจคเว็บ: พัฒนาต่อเนื่อง</td>
+                            <td class="subject-game">การทำเกม</td>
+                            <td class="subject-english">ภาษาอังกฤษ</td>
+                        </tr>
+                        <tr>
+                            <td>ศุกร์</td>
+                            <td class="subject-data">Data Structure</td>
+                            <td class="subject-linux">Linux & Command Line</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาต่อเนื่อง</td>
+                        </tr>
+                        <tr>
+                            <td>เสาร์</td>
+                            <td class="subject-project">โปรเจค Python: Data Analysis</td>
+                            <td class="subject-game">การทำเกม</td>
+                            <td class="subject-project">โปรเจคเว็บ: พัฒนาต่อเนื่อง</td>
+                        </tr>
+                        <tr>
+                            <td>อาทิตย์</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาต่อเนื่อง</td>
+                            <td class="subject-project">โปรเจคตามความสนใจ</td>
+                            <td class="subject-typing">Typing Practice</td>
+                        </tr>
+                    </table>
+
+                    <h4>สัปดาห์สุดท้าย (9 - 15 มิ.ย.)</h4>
+                    <table>
+                        <tr>
+                            <th>วัน</th>
+                            <th>เช้า (9:00-12:00)</th>
+                            <th>บ่าย (13:30-16:30)</th>
+                            <th>เย็น (18:00-21:00)</th>
+                        </tr>
+                        <tr>
+                            <td>9 มิ.ย.</td>
+                            <td class="subject-project">โปรเจคเกม: ปรับแต่งเกมและแก้บัค</td>
+                            <td class="subject-project">โปรเจคเว็บ: ปรับแต่งเว็บไซต์และแก้บัค</td>
+                            <td class="subject-project">โปรเจค Python: ปรับแต่งและแก้บัค</td>
+                        </tr>
+                        <tr>
+                            <td>10 มิ.ย.</td>
+                            <td class="subject-calc">ทดลองประยุกต์ใช้ Calculus 3 กับโปรเจค</td>
+                            <td class="subject-discrete">ทดลองประยุกต์ใช้ Discrete Mathematics กับโปรเจค</td>
+                            <td class="subject-project">โปรเจคเกม: พัฒนาระบบสุดท้าย</td>
+                        </tr>
+                        <tr>
+                            <td>11 มิ.ย.</td>
+                            <td class="subject-data">ทดลองประยุกต์ใช้ Data Structure กับโปรเจค</td>
+                            <td class="subject-python">Python: การทำ Machine Learning พื้นฐาน</td>
+                            <td class="subject-typing">Typing Practice: ทดสอบความเร็วและแม่นยำ</td>
+                        </tr>
+                        <tr>
+                            <td>12 มิ.ย.</td>
+                            <td class="subject-web">เพิ่มฟีเจอร์สุดท้ายให้โปรเจคเว็บ</td>
+                            <td class="subject-game">เพิ่มฟีเจอร์สุดท้ายให้โปรเจคเกม</td>
+                            <td class="subject-linux">ทดลองตั้งค่าเซิร์ฟเวอร์เพื่อรันโปรเจค</td>
+                        </tr>
+                        <tr>
+                            <td>13 มิ.ย.</td>
+                            <td class="subject-project">สรุปและตรวจสอบโปรเจคเกม</td>
+                            <td class="subject-project">สรุปและตรวจสอบโปรเจค Python</td>
+                            <td class="subject-problem">แก้โจทย์ปัญหาโดยประยุกต์ทุกความรู้</td>
+                        </tr>
+                        <tr>
+                            <td>14 มิ.ย.</td>
+                            <td class="subject-project">จัดทำเอกสารประกอบโปรเจค</td>
+                            <td class="subject-project">จัดทำเอกสารประกอบโปรเจค</td>
+                            <td class="subject-project">เตรียมนำโปรเจคไปต่อยอด</td>
+                        </tr>
+                        <tr>
+                            <td>15 มิ.ย.</td>
+                            <td class="subject-project">ส่งมอบโปรเจคทั้งหมด</td>
+                            <td class="subject-project">ทำแผนการเรียนต่อและเป้าหมายในอนาคต</td>
+                            <td class="subject-project">วางแผนโปรเจคถัดไปที่สนใจ</td>
+                        </tr>
+                    </table>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#projects" class="pulse-btn" onclick="openTab(event, 'projects')">ดูรายละเอียดโปรเจค</a>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="projects" class="tab-content">
+                <section>
+                    <h2>รายละเอียดโปรเจคที่แนะนำ</h2>
+                    
+                    <div class="project-details">
+                        <h3>1. โปรเจคเว็บไซต์: เว็บพอร์ตโฟลิโอส่วนตัวพร้อมระบบบล็อก</h3>
+                        <p><strong>คำอธิบาย:</strong> สร้างเว็บไซต์ส่วนตัวที่แสดงประวัติ ผลงาน และมีระบบบล็อกง่ายๆ</p>
+                        <p><strong>เทคโนโลยี:</strong> HTML, CSS, JavaScript (และอาจใช้ framework เบื้องต้นเช่น Bootstrap)</p>
+                        <p><strong>ฟีเจอร์ที่ควรมี:</strong></p>
+                        <ul>
+                            <li>หน้าแรกที่แนะนำตัวคุณ</li>
+                            <li>หน้าแสดงผลงานและความสามารถ</li>
+                            <li>ระบบบล็อกอย่างง่ายเพื่อเขียนบันทึกการเรียนรู้</li>
+                            <li>การแสดงความก้าวหน้าในการเรียนรู้</li>
+                        </ul>
+
+                        <h3>2. โปรเจคเกม: เกม 2D ด้วย Godot Engine</h3>
+                        <p><strong>คำอธิบาย:</strong> สร้างเกม 2D แนว Platformer หรือ Puzzle</p>
+                        <p><strong>เทคโนโลยี:</strong> Godot Engine, GDScript</p>
+                        <p><strong>ฟีเจอร์ที่ควรมี:</strong></p>
+                        <ul>
+                            <li>การสร้างตัวละครและสภาพแวดล้อม</li>
+                            <li>ระบบคะแนนและความท้าทาย</li>
+                            <li>การบันทึกคะแนนสูงสุด</li>
+                            <li>การใช้เสียงและกราฟิกพื้นฐาน</li>
+                        </ul>
+                        
+                        <h3>3. โปรเจค Python: Data Analysis และ Visualization</h3>
+                        <p><strong>คำอธิบาย:</strong> สร้างโปรเจควิเคราะห์ข้อมูลและสร้างการแสดงผลด้วยภาพ</p>
+                        <p><strong>เทคโนโลยี:</strong> Python, Pandas, Matplotlib, Seaborn</p>
+                        <p><strong>ฟีเจอร์ที่ควรมี:</strong></p>
+                        <ul>
+                            <li>การนำเข้าและทำความสะอาดข้อมูล</li>
+                            <li>การวิเคราะห์ข้อมูลเชิงสถิติ</li>
+                            <li>การสร้างกราฟและแผนภูมิหลากหลายรูปแบบ</li>
+                            <li>การสร้าง Dashboard ง่ายๆ ด้วย Streamlit</li>
+                        </ul>
+                        
+                        <h3>4. โปรเจค Rust: CLI Tool</h3>
+                        <p><strong>คำอธิบาย:</strong> สร้างเครื่องมือ Command Line ที่มีประโยชน์</p>
+                        <p><strong>เทคโนโลยี:</strong> Rust, Cargo</p>
+                        <p><strong>ฟีเจอร์ที่ควรมี:</strong></p>
+                        <ul>
+                            <li>การรับและประมวลผลอาร์กิวเมนต์</li>
+                            <li>การทำงานกับไฟล์และระบบไฟล์</li>
+                            <li>การจัดการข้อผิดพลาด</li>
+                            <li>เครื่องมือที่ช่วยในการทำงานประจำวัน เช่น ค้นหาไฟล์, แปลงไฟล์, เช็คข้อมูล</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <a href="#resources" class="pulse-btn" onclick="openTab(event, 'resources')">ดูแหล่งเรียนรู้</a>
+                    </div>
+                </section>
+            </div>
+            
+            <div id="resources" class="tab-content">
+                <section>
+                    <h2>แหล่งเรียนรู้ที่แนะนำ</h2>
+                    
+                    <div class="resources">
+                        <h3>Calculus 3</h3>
+                        <ul>
+                            <li>หนังสือ: Calculus โดย James Stewart</li>
+                            <li>ออนไลน์: Khan Academy, MIT OpenCourseWare, 3Blue1Brown</li>
+                        </ul>
+                    
+                        <h3>Discrete Mathematics</h3>
+                        <ul>
+                            <li>หนังสือ: Discrete Mathematics and Its Applications โดย Kenneth Rosen</li>
+                            <li>ออนไลน์: TrevTutor, MIT OpenCourseWare</li>
+                        </ul>
+                    
+                        <h3>Data Structure</h3>
+                        <ul>
+                            <li>หนังสือ: Introduction to Algorithms โดย CLRS</li>
+                            <li>ออนไลน์: GeeksforGeeks, Coursera (Data Structures by University of California San Diego)</li>
+                        </ul>
+                    
+                        <h3>ภาษา Python</h3>
+                        <ul>
+                            <li>หนังสือ: Python Crash Course โดย Eric Matthes</li>
+                            <li>ออนไลน์: Codecademy, DataCamp, Real Python</li>
+                            <li>วิดีโอ: CS50's Introduction to Python, Corey Schafer (YouTube)</li>
+                            <li>Data Science: Kaggle, Fast.ai, Python for Data Analysis โดย Wes McKinney</li>
+                        </ul>
+                    
+                        <h3>ภาษา Rust</h3>
+                        <ul>
+                            <li>หนังสือ: The Rust Programming Language (อ่านฟรีออนไลน์)</li>
+                            <li>ออนไลน์: Rust by Example, Rustlings, exercism.io</li>
+                        </ul>
+                    
+                        <h3>ภาษาอังกฤษเพื่อการสนทนา</h3>
+                        <ul>
+                            <li>แอพ: Duolingo, Lingoda, iTalki</li>
+                            <li>ออนไลน์: BBC Learning English, YouTube channels (EnglishClass101, Rachel's English)</li>
+                        </ul>
+                    
+                        <h3>การทำเกม</h3>
+                        <ul>
+                            <li>เครื่องมือ: Godot (ฟรี), Unity, Unreal Engine</li>
+                            <li>ออนไลน์: GDQuest (YouTube), Brackeys (YouTube), Udemy courses, GameDev.tv</li>
+                        </ul>
+                        
+                        <h3>การพัฒนาเว็บไซต์</h3>
+                        <ul>
+                            <li>ออนไลน์: FreeCodeCamp, MDN Web Docs, W3Schools</li>
+                            <li>วิดีโอ: Traversy Media (YouTube), The Net Ninja (YouTube)</li>
+                            <li>เครื่องมือ: VS Code, Chrome DevTools</li>
+                        </ul>
+                        
+                        <h3>Linux & Command Line</h3>
+                        <ul>
+                            <li>หนังสือ: The Linux Command Line โดย William Shotts (ฟรีออนไลน์)</li>
+                            <li>ออนไลน์: Linux Journey, OverTheWire (Bandit game)</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>สร้างขึ้นเพื่อการวางแผนการเรียนรู้ด้านคอมพิวเตอร์ © 2568</p>
+        </div>
+    </footer>
+    
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabBtns;
+            
+            // Hide all tab content
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            
+            // Remove "active" class from all tab buttons
+            tabBtns = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].className = tabBtns[i].className.replace(" active", "");
+            }
+            
+            // Show the current tab and add "active" class to the button
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        // กำหนดวันสิ้นสุดหลักสูตร
+        const endDate = new Date('June 15, 2025 21:00:00').getTime();
+        // กำหนดวันเริ่มต้นหลักสูตร
+        const startDate = new Date('April 8, 2025 09:00:00').getTime();
+        
+        // อัพเดทตัวนับถอยหลังทุกวินาที
+        const countdown = setInterval(function() {
+            // เวลาปัจจุบัน
+            const now = new Date().getTime();
+            
+            // คำนวณเวลาที่เหลือ
+            const remaining = endDate - now;
+            
+            // คำนวณวัน ชั่วโมง นาที และวินาที
+            const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+            
+            // คำนวณความคืบหน้าเป็นเปอร์เซ็นต์
+            const totalDuration = endDate - startDate;
+            const elapsed = now - startDate;
+            const progress = Math.min(100, Math.max(0, Math.floor((elapsed / totalDuration) * 100)));
+            
+            // แสดงผลในหน้าเว็บ
+            document.getElementById('days').innerHTML = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerHTML = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerHTML = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerHTML = seconds < 10 ? '0' + seconds : seconds;
+            
+            // อัพเดทความคืบหน้า
+            document.getElementById('progress-fill').style.width = progress + '%';
+            document.getElementById('progress-percent').innerHTML = progress + '%';
+            
+            // ถ้าการนับถอยหลังสิ้นสุด
+            if (remaining < 0) {
+                clearInterval(countdown);
+                document.getElementById('days').innerHTML = '00';
+                document.getElementById('hours').innerHTML = '00';
+                document.getElementById('minutes').innerHTML = '00';
+                document.getElementById('seconds').innerHTML = '00';
+                document.getElementById('progress-fill').style.width = '100%';
+                document.getElementById('progress-percent').innerHTML = '100%';
+            }
+        }, 1000);
+        // ข้อมูลความคืบหน้า
+    let progressData = {
+        subjects: {
+            calculus: { total: 30, completed: 0 },
+            discrete: { total: 30, completed: 0 },
+            datastructure: { total: 40, completed: 0 },
+            python: { total: 30, completed: 0 },
+            rust: { total: 30, completed: 0 },
+            english: { total: 20, completed: 0 },
+            game: { total: 50, completed: 0 },
+            web: { total: 40, completed: 0 },
+            linux: { total: 20, completed: 0 },
+            typing: { total: 10, completed: 0 },
+            problem: { total: 20, completed: 0 }
+        },
+        projects: {
+            web: { milestones: [false, false, false, false, false] },
+            game: { milestones: [false, false, false, false, false] },
+            python: { milestones: [false, false, false, false, false] }
+        }
+    };
+    
+    // โหลดข้อมูลจาก localStorage ถ้ามี
+    function loadProgress() {
+        const savedProgress = localStorage.getItem('studyProgress');
+        if (savedProgress) {
+            progressData = JSON.parse(savedProgress);
+            updateAllProgressDisplays();
+        }
+    }
+    
+    // บันทึกข้อมูลลง localStorage
+    function saveProgress() {
+        localStorage.setItem('studyProgress', JSON.stringify(progressData));
+    }
+    
+    // อัพเดทการแสดงผลทั้งหมด
+    function updateAllProgressDisplays() {
+        // อัพเดทความคืบหน้ารายวิชา
+        Object.keys(progressData.subjects).forEach(subject => {
+            const data = progressData.subjects[subject];
+            const percent = Math.round((data.completed / data.total) * 100);
+            
+            // อัพเดทแถบความคืบหน้า
+            const subjectCards = document.querySelectorAll(`.subject-card[class*="${subject}"]`);
+            if (subjectCards.length > 0) {
+                const card = subjectCards[0];
+                const progressFill = card.querySelector('.subject-progress-fill');
+                const hoursDisplay = card.querySelector('.subject-hours');
+                
+                if (progressFill) progressFill.style.width = `${percent}%`;
+                if (hoursDisplay) hoursDisplay.textContent = `${data.completed}/${data.total} ชม.`;
+            }
+        });
+        
+        // อัพเดทความคืบหน้าโปรเจค
+        Object.keys(progressData.projects).forEach(project => {
+            const milestones = progressData.projects[project].milestones;
+            const completedMilestones = milestones.filter(m => m).length;
+            const totalMilestones = milestones.length;
+            const percent = Math.round((completedMilestones / totalMilestones) * 100);
+            
+            // อัพเดทเช็คบ็อกซ์
+            milestones.forEach((isCompleted, index) => {
+                const checkbox = document.querySelector(`#${project}-milestone-${index + 1}`);
+                if (checkbox) checkbox.checked = isCompleted;
+            });
+            
+            // อัพเดทแถบความคืบหน้าและเปอร์เซ็นต์
+            const projectCard = document.querySelector(`.project-card:has(h4:contains("${project}"))`);
+            if (projectCard) {
+                const progressFill = projectCard.querySelector('.project-progress-fill');
+                const percentDisplay = projectCard.querySelector('.project-percent');
+                
+                if (progressFill) progressFill.style.width = `${percent}%`;
+                if (percentDisplay) percentDisplay.textContent = `${percent}%`;
+            }
+        });
+        
+        // คำนวณและอัพเดทความคืบหน้ารวม
+        updateOverallProgress();
+    }
+    
+    // คำนวณความคืบหน้ารวม
+    function updateOverallProgress() {
+        // คำนวณความคืบหน้ารายวิชา
+        let totalHours = 0;
+        let completedHours = 0;
+        let completedSubjects = 0;
+        
+        Object.values(progressData.subjects).forEach(subject => {
+            totalHours += subject.total;
+            completedHours += subject.completed;
+            if (subject.completed >= subject.total) completedSubjects++;
+        });
+        
+        // คำนวณความคืบหน้าโปรเจค
+        let totalMilestones = 0;
+        let completedMilestones = 0;
+        
+        Object.values(progressData.projects).forEach(project => {
+            totalMilestones += project.milestones.length;
+            completedMilestones += project.milestones.filter(m => m).length;
+        });
+        
+        const subjectsPercent = (completedHours / totalHours) * 100;
+        const projectsPercent = (completedMilestones / totalMilestones) * 100;
+        
+        // คำนวณความคืบหน้ารวม (70% จากวิชา, 30% จากโปรเจค)
+        const overallPercent = Math.round((subjectsPercent * 0.7) + (projectsPercent * 0.3));
+        
+        // อัพเดท UI
+        const overallProgressCircle = document.getElementById('overall-progress-circle');
+        const overallProgressPercent = document.getElementById('overall-progress-percent');
+        const completedSubjectsEl = document.getElementById('completed-subjects');
+        const completedHoursEl = document.getElementById('completed-hours');
+        const projectProgressEl = document.getElementById('project-progress');
+        
+        if (overallProgressCircle) {
+            const circumference = 2 * Math.PI * 54;
+            const offset = circumference - (overallPercent / 100 * circumference);
+            overallProgressCircle.style.strokeDashoffset = offset;
+        }
+        
+        if (overallProgressPercent) overallProgressPercent.textContent = `${overallPercent}%`;
+        if (completedSubjectsEl) completedSubjectsEl.textContent = `${completedSubjects}/11`;
+        if (completedHoursEl) completedHoursEl.textContent = `${completedHours}/${totalHours}`;
+        if (projectProgressEl) projectProgressEl.textContent = `${Math.round(projectsPercent)}%`;
+    }
+    
+    // เพิ่ม Event Listeners
+    document.addEventListener('DOMContentLoaded', function() {
+        // โหลดข้อมูลเมื่อโหลดหน้าเว็บ
+        loadProgress();
+        
+        // Event listener สำหรับปุ่มอัพเดทวิชา
+        document.querySelectorAll('.subject-update-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const subject = this.dataset.subject;
+                const total = parseInt(this.dataset.total);
+                
+                // แสดง Dialog ให้ป้อนจำนวนชั่วโมงที่เรียนแล้ว
+                const hours = prompt(`ป้อนจำนวนชั่วโมงที่เรียนวิชา ${subject} แล้ว (0-${total}):`, progressData.subjects[subject].completed);
+                
+                if (hours !== null) {
+                    const completedHours = Math.min(total, Math.max(0, parseInt(hours) || 0));
+                    progressData.subjects[subject].completed = completedHours;
+                    saveProgress();
+                    updateAllProgressDisplays();
+                }
+            });
+        });
+        
+        // Event listener สำหรับ milestone checkboxes
+        document.querySelectorAll('.milestone-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const project = this.dataset.project;
+                const milestone = parseInt(this.dataset.milestone) - 1;
+                
+                progressData.projects[project].milestones[milestone] = this.checked;
+                saveProgress();
+                updateAllProgressDisplays();
+            });
+        });
+        
+        // ตั้งค่า progress circle
+        const overallProgressCircle = document.getElementById('overall-progress-circle');
+        if (overallProgressCircle) {
+            const circumference = 2 * Math.PI * 54;
+            overallProgressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        }
+    });
+    
+    // เพิ่มเมธอดเพื่อค้นหา element ที่มีข้อความเฉพาะภายใน (สำหรับการอัพเดท UI)
+    if (!HTMLElement.prototype.hasOwnProperty('contains')) {
+        HTMLElement.prototype.contains = function(selector) {
+            return this.textContent.includes(selector);
+        };
+    }
+    </script>
+</body>
+</html>

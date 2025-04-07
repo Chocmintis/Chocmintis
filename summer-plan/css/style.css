@@ -1,0 +1,1098 @@
+/* 
+ * style.css - ไฟล์ CSS หลักสำหรับตารางเรียนซัมเมอร์ 2568
+ */
+
+/* ตัวแปร CSS */
+:root {
+    /* สีหลัก */
+    --primary: #472950;
+    --secondary: #C0A4C4;
+    --accent: #D46A79;
+    --light-accent: #F6CBB6;
+    --dark-accent: #78201B;
+    
+    /* สีสำหรับ UI */
+    --bg-light: #f9f6fb;
+    --bg-white: #ffffff;
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --shadow: 0 4px 12px rgba(71, 41, 80, 0.15);
+    --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --overlay: rgba(71, 41, 80, 0.03);
+    
+    /* สีพื้นหลังรายวิชา */
+    --calc-bg: rgba(192, 164, 196, 0.2);
+    --discrete-bg: rgba(192, 164, 196, 0.3);
+    --data-bg: rgba(212, 106, 121, 0.15);
+    --python-bg: rgba(71, 41, 80, 0.1);
+    --rust-bg: rgba(212, 106, 121, 0.2);
+    --english-bg: rgba(246, 203, 182, 0.3);
+    --game-bg: rgba(120, 32, 27, 0.1);
+    --web-bg: rgba(246, 203, 182, 0.4);
+    --project-bg: rgba(192, 164, 196, 0.1);
+    --linux-bg: rgba(246, 203, 182, 0.2);
+    --typing-bg: rgba(212, 106, 121, 0.1);
+    --problem-bg: rgba(71, 41, 80, 0.15);
+    
+    /* ระยะห่าง */
+    --space-xs: 0.5rem;
+    --space-sm: 0.8rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 2.5rem;
+    
+    /* รัศมีขอบ */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 15px;
+    --radius-xl: 20px;
+    --radius-xxl: 30px;
+}
+
+/* รีเซ็ต CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Prompt', sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(192, 164, 196, 0.2), rgba(212, 106, 121, 0.1));
+    z-index: -1;
+}
+
+/* คอนเทนเนอร์หลัก */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+    position: relative;
+}
+
+/* ส่วนหัว */
+header {
+    background: var(--primary);
+    color: var(--text-light);
+    padding: var(--space-xxl) 0;
+    text-align: center;
+    border-radius: 0 0 var(--radius-xxl) var(--radius-xxl);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--space-xxl);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, 
+        rgba(71, 41, 80, 0.8) 0%, 
+        rgba(192, 164, 196, 0.5) 50%, 
+        rgba(212, 106, 121, 0.3) 100%);
+    z-index: 0;
+}
+
+header .container {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* เนื้อหาหลัก */
+.main-content {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow);
+    margin-bottom: var(--space-xxl);
+    overflow: hidden;
+    position: relative;
+}
+
+/* การ์ดบนแดชบอร์ด */
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+    padding: var(--space-xl);
+    background-color: var(--overlay);
+}
+
+.card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--secondary), var(--accent));
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--text-light);
+    border-radius: var(--radius-sm);
+    margin-right: var(--space-md);
+    font-size: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.card-content {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: var(--space-sm);
+}
+
+.card-footer {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 300;
+}
+
+/* แท็บ */
+.tabs {
+    display: flex;
+    background: var(--primary);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+    scrollbar-width: none; /* ซ่อน scrollbar ใน Firefox */
+}
+
+.tabs::-webkit-scrollbar {
+    display: none; /* ซ่อน scrollbar ใน Chrome, Safari */
+}
+
+.tab-btn {
+    padding: var(--space-md) var(--space-lg);
+    background: none;
+    border: none;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    position: relative;
+    white-space: nowrap;
+}
+
+.tab-btn::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--secondary), var(--accent));
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.tab-btn:hover {
+    color: var(--text-light);
+}
+
+.tab-btn:hover::after {
+    width: 80%;
+}
+
+.tab-btn.active {
+    color: var(--text-light);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn.active::after {
+    width: 80%;
+}
+
+.tab-content {
+    display: none;
+    padding: var(--space-xl);
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ข้อความ */
+section {
+    margin-bottom: var(--space-xxl);
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-sm);
+    position: relative;
+    font-weight: 600;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+}
+
+h3 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin: var(--space-lg) 0 var(--space-md);
+    font-weight: 500;
+}
+
+h4 {
+    color: var(--dark-accent);
+    font-size: 1.2rem;
+    margin: var(--space-md) 0 var(--space-sm);
+    font-weight: 500;
+}
+
+/* พื้นหลังรายวิชา */
+.subject-calc { background-color: var(--calc-bg); }
+.subject-discrete { background-color: var(--discrete-bg); }
+.subject-data { background-color: var(--data-bg); }
+.subject-python { background-color: var(--python-bg); }
+.subject-rust { background-color: var(--rust-bg); }
+.subject-english { background-color: var(--english-bg); }
+.subject-game { background-color: var(--game-bg); }
+.subject-web { background-color: var(--web-bg); }
+.subject-project { background-color: var(--project-bg); }
+.subject-linux { background-color: var(--linux-bg); }
+.subject-typing { background-color: var(--typing-bg); }
+.subject-problem { background-color: var(--problem-bg); }
+
+/* ตาราง */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: var(--space-lg) 0 var(--space-xxl);
+    background-color: var(--bg-white);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    font-size: 0.95rem;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary);
+    color: var(--text-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(192, 164, 196, 0.05);
+}
+
+tr:hover {
+    background-color: rgba(192, 164, 196, 0.1);
+}
+
+/* รายละเอียดโปรเจค */
+.project-details {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-top: var(--space-xl);
+    box-shadow: var(--shadow-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+}
+
+.project-details h3 {
+    color: var(--primary);
+    margin-top: var(--space-lg);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(192, 164, 196, 0.2);
+}
+
+.project-details ul, .resources ul {
+    margin-left: var(--space-lg);
+    margin-top: var(--space-md);
+}
+
+.project-details li, .resources li {
+    margin-bottom: var(--space-sm);
+    position: relative;
+}
+
+/* แหล่งเรียนรู้ */
+.resources {
+    margin-top: var(--space-xl);
+}
+
+.resources h3 {
+    margin-top: var(--space-xl);
+    color: var(--primary);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid rgba(192, 164, 196, 0.2);
+}
+
+/* ส่วนเคล็ดลับ */
+.tips {
+    background: linear-gradient(135deg, var(--primary), var(--dark-accent));
+    color: var(--text-light);
+    padding: var(--space-xxl);
+    border-radius: var(--radius-lg);
+    margin: var(--space-xxl) 0;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(71, 41, 80, 0.2);
+}
+
+.tips::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transform: translate(50%, -50%);
+}
+
+.tips h2 {
+    color: var(--text-light);
+    border-bottom: none;
+    padding-bottom: var(--space-md);
+}
+
+.tips h2::after {
+    background: linear-gradient(to right, var(--text-light), rgba(255, 255, 255, 0.5));
+}
+
+.tips ol {
+    margin-left: var(--space-lg);
+    counter-reset: tip-counter;
+}
+
+.tips li {
+    margin-bottom: var(--space-md);
+    position: relative;
+    padding-left: var(--space-xs);
+    counter-increment: tip-counter;
+}
+
+.tips li::marker {
+    font-weight: 600;
+    color: var(--secondary);
+}
+
+/* ส่วนท้าย */
+footer {
+    text-align: center;
+    padding: var(--space-xxl) 0;
+    background-color: var(--primary);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, var(--secondary), var(--accent), var(--light-accent), var(--dark-accent));
+}
+
+/* ปุ่ม */
+.btn {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-xl);
+    background: linear-gradient(to right, var(--accent), var(--dark-accent));
+    color: var(--text-light);
+    border: none;
+    border-radius: 30px;
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: var(--space-lg);
+    box-shadow: 0 4px 10px rgba(212, 106, 121, 0.3);
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(212, 106, 121, 0.4);
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-small {
+    padding: var(--space-xs) var(--space-md);
+    font-size: 0.9rem;
+}
+
+.btn-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 200px;
+}
+
+/* นับถอยหลัง */
+.countdown-container {
+    background: linear-gradient(135deg, var(--primary), var(--dark-accent));
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+    color: var(--text-light);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.countdown-container::before {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.countdown-container h2 {
+    color: var(--text-light);
+    margin-bottom: var(--space-lg);
+    font-weight: 600;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-container h2::after {
+    background: linear-gradient(to right, var(--text-light), rgba(255, 255, 255, 0.5));
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+    flex-wrap: wrap;
+}
+
+.countdown-box {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    min-width: 80px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.countdown-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--light-accent);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.countdown-label {
+    font-size: 0.9rem;
+    margin-top: var(--space-xs);
+    opacity: 0.9;
+}
+
+#progress-container {
+    margin-top: var(--space-lg);
+}
+
+.progress-label {
+    text-align: left;
+    margin-bottom: var(--space-xs);
+    font-weight: 500;
+}
+
+.progress-bar {
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: var(--space-xs);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--light-accent), var(--accent));
+    border-radius: 10px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+}
+
+#progress-percent {
+    text-align: right;
+    font-weight: 600;
+    color: var(--light-accent);
+}
+
+/* ความคืบหน้า */
+.progress-tracker-container {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    box-shadow: var(--shadow-light);
+}
+
+.progress-tracker-container h2 {
+    color: var(--primary);
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.progress-summary {
+    display: flex;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-xxl);
+    align-items: center;
+    background-color: var(--bg-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+}
+
+.progress-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.progress-circle-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.progress-circle {
+    transform: rotate(-90deg);
+}
+
+.progress-circle-bg {
+    fill: none;
+    stroke: rgba(192, 164, 196, 0.3);
+    stroke-width: 12;
+}
+
+.progress-circle-fill {
+    fill: none;
+    stroke: var(--primary);
+    stroke-width: 12;
+    stroke-dasharray: 339.5;
+    transition: stroke-dashoffset 1s ease;
+}
+
+.progress-circle-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.progress-circle-text span {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.progress-stat-label {
+    margin-top: var(--space-sm);
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.progress-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.progress-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.progress-detail-label {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+/* วิชาและโปรเจค */
+.subjects-progress, .projects-progress {
+    margin-top: var(--space-xl);
+}
+
+.subjects-progress h3, .projects-progress h3 {
+    color: var(--primary);
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-lg);
+}
+
+.subject-card {
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.subject-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.subject-header h4 {
+    margin: 0;
+    color: var(--dark-accent);
+    font-size: 1.1rem;
+}
+
+.subject-hours {
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.subject-progress-bar, .project-progress-bar {
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: var(--space-md);
+}
+
+.subject-progress-fill, .project-progress-fill {
+    height: 100%;
+    background: linear-gradient(to right, var(--secondary), var(--primary));
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.subject-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.subject-update-btn {
+    background-color: var(--primary);
+    color: var(--text-light);
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: var(--space-xs) var(--space-md);
+    font-family: 'Prompt', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.subject-update-btn:hover {
+    background-color: var(--dark-accent);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--space-lg);
+}
+
+.project-card {
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-light);
+    background-color: var(--bg-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+}
+
+.project-header h4 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.project-percent {
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.project-milestones {
+    margin-top: var(--space-md);
+}
+
+.milestone {
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+}
+
+.milestone-checkbox {
+    margin-right: var(--space-sm);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.milestone label {
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+/* รองรับอุปกรณ์ขนาดต่างๆ */
+@media (max-width: 1024px) {
+    .progress-summary {
+        flex-direction: column;
+        gap: var(--space-lg);
+        padding: var(--space-md);
+    }
+    
+    .progress-details {
+        width: 100%;
+    }
+    
+    .subjects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: var(--space-lg) 0;
+        border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    }
+    
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    header p {
+        font-size: 1rem;
+    }
+    
+    .dashboard {
+        grid-template-columns: 1fr;
+        padding: var(--space-md);
+    }
+    
+    .tab-btn {
+        padding: var(--space-sm) var(--space-md);
+        font-size: 0.9rem;
+    }
+    
+    .tab-content {
+        padding: var(--space-md);
+    }
+    
+    table {
+        font-size: 0.85rem;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+    }
+    
+    .countdown-box {
+        min-width: 70px;
+    }
+    
+    .countdown-value {
+        font-size: 2rem;
+    }
+    
+    .tips {
+        padding: var(--space-lg);
+    }
+}
+
+@media (max-width: 480px) {
+    .tab-btn {
+        padding: var(--space-xs) var(--space-sm);
+        font-size: 0.8rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    .progress-circle-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .progress-circle-text span {
+        font-size: 1.5rem;
+    }
+    
+    .subjects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .countdown-timer {
+        gap: var(--space-xs);
+    }
+    
+    .countdown-box {
+        min-width: 60px;
+        padding: var(--space-sm);
+        .countdown-box {
+            min-width: 60px;
+            padding: var(--space-sm);
+        }
+        
+        .countdown-value {
+            font-size: 1.5rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+        }
+        
+        .project-card {
+            padding: var(--space-md);
+        }
+        
+        .milestone label {
+            font-size: 0.85rem;
+        }
+        
+        th {
+            font-size: 0.75rem;
+        }
+        
+        td {
+            font-size: 0.8rem;
+        }
+    }
+    
+    /* Animation */
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 0 0 rgba(212, 106, 121, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 10px rgba(212, 106, 121, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(212, 106, 121, 0);
+        }
+    }
+    
+    .pulse {
+        animation: pulse 2s infinite;
+    }
+    
+    /* Added styles for accessibility */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    
+    input:focus, button:focus, a:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+    
+    /* Print styles */
+    @media print {
+        body {
+            background: none;
+            color: #000;
+        }
+        
+        .main-content {
+            box-shadow: none;
+        }
+        
+        .countdown-container, .dashboard, .tabs, .subject-controls, .btn {
+            display: none;
+        }
+        
+        header, footer {
+            background: none;
+            color: #000;
+        }
+        
+        header::before, footer::before {
+            display: none;
+        }
+        
+        .tab-content {
+            display: block !important;
+        }
+        
+        table {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #eee;
+            color: #000;
+        }
+    }
